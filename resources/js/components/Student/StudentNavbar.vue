@@ -8,10 +8,10 @@
                 >
                 <div>
                     <div class="brand-title-desktop">GOV. ALFONSO D. TAN COLLEGE</div>
-                    <div class="brand-subtitle-desktop">GADTest</div>
+                    <div class="brand-subtitle-desktop">ITE COMPEHENSIVE</div>
 
                     <div class="brand-title-mobile">GADTC</div>
-                    <div class="brand-subtitle-mobile">GADTest</div>
+                    <div class="brand-subtitle-mobile">ITE COMPRE</div>
                 </div>
 
             </b-navbar-item>

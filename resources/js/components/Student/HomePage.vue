@@ -7,34 +7,9 @@
                     <div class="columns">
                         <div class="column is-6 is-offset-3">
                             <div class="box">
-                                <h1 class="title is-5">GADTEST SCHEDULE</h1><hr>
-
-                                <b-notification v-if="isNotScheduled == 1"
-                                    type="is-danger"
-                                    aria-close-label="Close notification"
-                                    role="alert">
-                                    Sorry, it is not yet your schedule. You may take the test only by the system generated schedule below.
-                                </b-notification>
-
-                                <b-notification v-if="alreadyVisitedSection.trim() == 'visited'"
-                                    type="is-danger is-light"
-                                    aria-close-label="Close notification"
-                                    role="alert">
-                                    Entering twice is prohibited.
-                                </b-notification>
-
-                                <b-notification v-if="isExist.trim() == 'exist'"
-                                                type="is-danger is-light"
-                                                aria-close-label="Close notification"
-                                                role="alert">
-                                    You already have test records.
-                                </b-notification>
-
-                                <p v-if="schedules" style="text-align:center;">Your schedule is on {{ scheduleNiya }}</p>
-                                <p v-else style="text-align:center;">To take the test, you must request a schedule first.</p>
-
+                
                                 <div class="instruction">
-                                    <p class="title is-5">ADMISSION TEST DIRECTIONS</p>
+                                    <p class="title is-5">COMPREHENSIVE EXAM DIRECTIONS</p>
                                     <ul>
                                         <li>1. You will  take  five (5) sets of  tests; each consists of 18 - item multiple choice test.</li>
                                         <li>2. You will take a total of 90  test items randomly generated from our system.</li>
@@ -47,20 +22,8 @@
 
                                 </div>
 
-
-                                <div v-if="schedules" class="buttons is-centered mt-5">
-                                    <b-button @click="proceedNext" class="button is-primary is-outlined">
-                                        <b-icon pack="fa" icon="arrow-right"></b-icon> &nbsp;&nbsp;NEXT
-                                    </b-button>
-
-                                    <form id="section-form" method="POST" action="/section">
-                                        <csrf></csrf>
-                                        <input type="hidden" id="schedule_id" name="student_schedule_id" readonly :value="this.schedules.student_schedule_id"></input>
-                                    </form>
-                                </div>
-
-                                <div v-else class="buttons mt-5 is-centered">
-                                    <button  @click="requestSchedule" :class="btnClass">REQUEST SCHEDULE</button>
+                                <div class="buttons mt-5 is-centered">
+                                    <a href="/section" class="button is-success is-outlined">NEXT</a>
                                 </div>
 
 
@@ -71,36 +34,6 @@
                     </div>
 
 
-                    <!-- <div class="columns">
-                        <div class="column is-8 is-offset-2">
-
-                            <b-notification v-if="isTaken == 1"
-                                type="is-danger"
-                                aria-close-label="Close notification"
-                                role="alert">
-                                You already taken the test.
-                            </b-notification>
-
-                            <div class="horizontal-word">
-                                <span>PLEASE READ ME!</span>
-                            </div>
-                            <div class="instruction">
-
-                                <p>Good day our dear freshmen! You are about to take the GADTC Admission Test (GADTest).
-                                    This is a 90 item test that you should take for only 45 minutes.
-                                    A timer is found at the bottom for your reference.
-                                    Rest assured all information that you will input in the test will be kept confidential.
-                                    If you are ready, click the button below.
-                                </p>
-
-                            </div>
-                            <div class="buttons is-centered">
-                                <a href="/section" class="button is-primary is-outlined">
-                                    <b-icon pack="fa" icon="arrow-right"></b-icon> &nbsp;&nbsp;NEXT
-                                </a>
-                            </div>
-                        </div>
-                    </div> -->
 
 
                 </div>

@@ -24,7 +24,10 @@
 <!--        </b-navbar>-->
 
 
-        <div class="hero is-fullheight-with-navbar">
+        <div class="hero is-fullheight">
+            <div class="w-navbar">
+                <span class="w-navbar-title">GOV. ALFONSO D. TAN COLLEGE</span>
+            </div>
             <div class="hero-body">
                 <div class="container">
 
@@ -32,18 +35,19 @@
                         <img src="/img/logo_small.png" alt="..." style="height: 150px;"/>
                     </div>
                     <div class="title is-4 text-center">
-                        WELCOME TO GADTest <br>(Online Test for Gov Alfonso D. Tan College Students)
+                        WELCOME TO ITE COMPREHENSIVE EXAM <br>(Online Exam for ITE 4th YEAR STUDENT)
                     </div>
 
                     <div class="buttons is-centered">
                         <a class="button is-outlined is-primary" href="/login">
                             <b-icon pack="fa" icon="arrow-right"></b-icon>
                             &nbsp; &nbsp;LOGIN NOW
-                        </a>&nbsp; OR &nbsp;
-                        <a class="button is-outlined is-primary" href="/register">
+                        </a>
+                        <!-- &nbsp; OR &nbsp; -->
+                        <!-- <a class="button is-outlined is-primary" href="/register">
                             <b-icon pack="fa" icon="user"></b-icon>
                             &nbsp; &nbsp;REGISTER NOW
-                        </a>
+                        </a> -->
                     </div>
 
                     <b-notification class="is-danger" v-if="isReg === false">
@@ -75,6 +79,19 @@ export default {
 <style scoped>
     .text-center{
         text-align: center;
+    }
+
+    .w-navbar{
+        height: 60px;
+        padding: 15px 0;
+        font-size: 20px;
+        border-bottom: 2px solid green;
+        display: flex;
+        justify-content: center;
+    }
+
+    .w-navbar-title {
+        font-weight: bold;
     }
 </style>
 
