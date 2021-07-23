@@ -9,7 +9,7 @@
                             <div class="box">
                 
                                 <div class="instruction">
-                                    <p class="title is-5">COMPREHENSIVE EXAM DIRECTIONS</p>
+                                    <p class="title is-5">INTERNSHIP EXAM DIRECTIONS</p>
                                     <ul>
                                         <li>1. You will  take  five (5) sets of  tests; each consists of 18 - item multiple choice test.</li>
                                         <li>2. You will take a total of 90  test items randomly generated from our system.</li>

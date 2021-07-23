@@ -1,28 +1,5 @@
 <template>
     <div>
-<!--        <b-navbar>-->
-<!--            <template #brand>-->
-<!--                <b-navbar-item>-->
-<!--                </b-navbar-item>-->
-<!--            </template>-->
-<!--            <template #start>-->
-
-<!--            </template>-->
-
-<!--            <template #end>-->
-<!--                <b-navbar-item tag="div">-->
-<!--                    <div class="buttons">-->
-<!--                        <a class="button is-primary" href="/student/login">-->
-<!--                            <strong>LOGIN</strong>-->
-<!--                        </a>-->
-<!--                        <a class="button is-light" href="/panel/login">-->
-<!--                            PANEL-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </b-navbar-item>-->
-<!--            </template>-->
-<!--        </b-navbar>-->
-
 
         <div class="hero is-fullheight">
             <div class="w-navbar">
@@ -33,26 +10,19 @@
 
                     <div style="display: flex; justify-content: center;">
                         <img src="/img/logo_small.png" alt="..." style="height: 150px;"/>
+                        <img src="/img/itelogo.png" alt="..." style="height: 150px;"/>
                     </div>
-                    <div class="title is-4 text-center">
-                        WELCOME TO ITE COMPREHENSIVE EXAM <br>(Online Exam for ITE 4th YEAR STUDENT)
+                    <div class="text-center mb-2">
+                        <p class="title is-5">WELCOME TO INTERNSHIP EXAMINATION</p>  
+                        <p class="subtitle">(Online Exam for ITE 4th Year Student)</p>
                     </div>
 
                     <div class="buttons is-centered">
-                        <a class="button is-outlined is-primary" href="/login">
+                        <a class="button is-rounded is-outlined is-primary" href="/login">
                             <b-icon pack="fa" icon="arrow-right"></b-icon>
                             &nbsp; &nbsp;LOGIN NOW
                         </a>
-                        <!-- &nbsp; OR &nbsp; -->
-                        <!-- <a class="button is-outlined is-primary" href="/register">
-                            <b-icon pack="fa" icon="user"></b-icon>
-                            &nbsp; &nbsp;REGISTER NOW
-                        </a> -->
                     </div>
-
-                    <b-notification class="is-danger" v-if="isReg === false">
-                        REGISTRATION IS CLOSED!
-                    </b-notification>
                 </div>
             </div>
         </div>
@@ -83,9 +53,9 @@ export default {
 
     .w-navbar{
         height: 60px;
+        border-bottom: 1px solid rgb(8, 119, 8);
         padding: 15px 0;
         font-size: 20px;
-        border-bottom: 2px solid green;
         display: flex;
         justify-content: center;
     }
@@ -93,5 +63,7 @@ export default {
     .w-navbar-title {
         font-weight: bold;
     }
+
+  
 </style>
 

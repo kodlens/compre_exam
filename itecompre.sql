@@ -319,16 +319,17 @@ CREATE TABLE `sections` (
   PRIMARY KEY (`section_id`),
   UNIQUE KEY `sections_section_unique` (`section`),
   UNIQUE KEY `sections_img_filename_unique` (`img_filename`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `sections` */
 
 insert  into `sections`(`section_id`,`section`,`img_filename`,`set_time`,`created_at`,`updated_at`) values 
-(1,'PROFESSIONAL EDUCATION','abstraction.svg',10,NULL,NULL),
-(2,'MAJOR 1','logical.svg',10,NULL,NULL),
-(3,'MAJOR 2','english.svg',10,NULL,NULL),
-(4,'MAJOR 3','numerical.svg',10,NULL,NULL),
-(5,'MAJOR 4','general.svg',10,NULL,NULL);
+(1,'PROFESSIONAL EDUCATION','abstraction.svg',180,NULL,NULL),
+(2,'FILIPINO MAJOR','logical.svg',180,NULL,NULL),
+(3,'ENGLISH MAJOR','english.svg',180,NULL,NULL),
+(4,'MATH MAJOR','numerical.svg',180,NULL,NULL),
+(5,'SOCSTUD MAJOR','general.svg',180,NULL,NULL),
+(6,'BEED MAJOR','generals.svg',180,NULL,NULL);
 
 /*Table structure for table `sessions` */
 

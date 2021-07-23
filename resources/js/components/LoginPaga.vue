@@ -78,7 +78,9 @@ export default{
         padding: 15px;
     }
 
-    .input-login input{
-        border: 1px solid red;
+    .input-login {
+        border: none !important;
     }
+
+    
 </style>
