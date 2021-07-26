@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Username and password error.',
+    'failed' => 'Inputted student id/username not found.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 

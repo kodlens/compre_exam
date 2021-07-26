@@ -23,10 +23,11 @@
                                 </div>
 
                                 <div class="buttons mt-5 is-centered">
-                                    <a href="/section" class="button is-success is-outlined">NEXT</a>
+                                    <a href="/section" class="button is-primary is-outlined is-rounded">
+                                        NEXT &nbsp;
+                                        <b-icon icon="chevron-right"></b-icon>
+                                    </a>
                                 </div>
-
-
 
                                <b-loading :is-full-page="false" v-model="isLoading" :can-cancel="true"></b-loading>
                             </div>

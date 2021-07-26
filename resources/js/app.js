@@ -127,7 +127,7 @@ Vue.component('report-result', require('./components/Administrator/Admission/Rep
 Vue.component('verify-email', require('./components/VerifyEmail.vue').default);
 
 
-Vue.component('login-page', require('./components/LoginPaga.vue').default);
+Vue.component('login-page', require('./components/LoginPage.vue').default);
 
 //STUDENT
 Vue.component('student-navbar', require('./components/Student/StudentNavbar.vue').default);

@@ -82,29 +82,29 @@
                         @sort="onSort">
 
                         <b-table-column field="category_id" label="ID" v-slot="props">
-                            {{ props.row.question_id }}
+                           {{ props.row.question_id }}
                         </b-table-column>
 
-                        <b-table-column field="question" label="Question" v-slot="props">
+                        <b-table-column field="question" label="QUESTION" v-slot="props">
                             <template>
-                                <span v-if="props.row.is_question_img == 0"> {{ props.row.question }}</span>
+                                <span v-if="props.row.is_question_img == 0" style="font-weight: bold;"> {{ props.row.question }}</span>
                                 <a v-else @click="showImg(props.row.question_img)">{{ props.row.question_img }}</a>
                             </template>
                         </b-table-column>
 
-                        <b-table-column field="section" label="Section" v-slot="props">
+                        <b-table-column field="section" label="SECTION" v-slot="props">
                             {{ props.row.section.section }}
                         </b-table-column>
 
-                        <b-table-column field="set_time" label="Time" v-slot="props">
+                        <b-table-column field="set_time" label="TIME" v-slot="props">
                             {{ props.row.set_time }}
                         </b-table-column>
 
-                        <b-table-column field="score" label="Score" v-slot="props">
+                        <b-table-column field="score" label="SCORE" v-slot="props">
                             {{ props.row.score }}
                         </b-table-column>
 
-                        <b-table-column field="" label="Action" v-slot="props">
+                        <b-table-column field="" label="ACTION" v-slot="props">
                             <div class="is-flex">
                                 <b-button outlined class="button is-small is-warning mr-1" tag="a" icon-right="pencil" icon-pack="fa" @click="getData(props.row.question_id)"></b-button>
                                 <b-button outlined class="button is-small is-danger mr-1" icon-pack="fa" icon-right="trash" @click="confirmDelete(props.row.question_id)"></b-button>
