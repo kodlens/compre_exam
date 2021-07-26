@@ -1,10 +1,10 @@
 <template>
     <div>
-
-        <div class="hero is-fullheight">
-            <div class="w-navbar">
-                <span class="w-navbar-title">GOV. ALFONSO D. TAN COLLEGE</span>
-            </div>
+        <div class="w-navbar">
+            <span class="w-navbar-title">GOV. ALFONSO D. TAN COLLEGE</span>
+        </div>
+        <div class="hero is-fullheight" style="margin-top: -60px;">
+            
             <div class="hero-body">
                 <div class="container">
 
