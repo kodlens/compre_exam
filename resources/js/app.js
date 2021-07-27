@@ -125,7 +125,6 @@ Vue.component('report-result', require('./components/Administrator/Admission/Rep
 //verification email
 Vue.component('verify-email', require('./components/VerifyEmail.vue').default);
 
-
 Vue.component('login-page', require('./components/LoginPage.vue').default);
 
 //STUDENT
@@ -150,7 +149,22 @@ Vue.component('result-exam', require('./components/Student/ResultExam.vue').defa
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+//  import { library } from '@fortawesome/fontawesome-svg-core';
+//  // internal icons
+// //  import { faCheck, faCheckCircle, faInfoCircle, faExclamationTriangle, faExclamationCircle,
+// //      faArrowUp, faAngleRight, faAngleLeft, faAngleDown,
+// //      faEye, faEyeSlash, faCaretDown, faCaretUp, faUpload } from "@fortawesome/free-solid-svg-icons";
+// //  import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+ 
+// //  library.add(faCheck, faCheckCircle, faInfoCircle, faExclamationTriangle, faExclamationCircle,
+// //      faArrowUp, faAngleRight, faAngleLeft, faAngleDown,
+// //      faEye, faEyeSlash, faCaretDown, faCaretUp, faUpload);
+// //  Vue.component('vue-fontawesome', FontAwesomeIcon);
+
+ 
 Vue.use(Buefy);
+
 //Vue.use(JsonExcel);
 //Vue.component("downloadExcel", JsonExcel);
 //Vue.use(moment);

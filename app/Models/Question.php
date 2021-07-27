@@ -16,7 +16,7 @@ class Question extends Model
 
     protected $fillable=['order_no',
         'acad_year_id',
-        'section_id', 'level_id', 'question', 'is_question_img', 'question_img', 'score'];
+        'section_id', 'level_id', 'question', 'is_question_img', 'set_time', 'question_img', 'score'];
 
 
 

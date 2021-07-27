@@ -126,14 +126,14 @@
                                         <td v-else><a @click="showImg(item.img_path)">{{ item.img_path }}</a></td>
                                         <td>
                                             <b-icon v-if="item.is_answer === 1"
-                                                    pack="fa"
-                                                    icon="check"
-                                                    size="is-small" type="is-success">
+                                                pack="fa"
+                                                icon="check"
+                                                size="is-small" type="is-success">
                                             </b-icon>
                                             <b-icon v-else
-                                                    pack="fa"
-                                                    icon="times"
-                                                    size="is-small" type="is-danger">
+                                                pack="fa"
+                                                icon="times"
+                                                size="is-small" type="is-danger">
                                             </b-icon>
                                         </td>
                                     </tr>
