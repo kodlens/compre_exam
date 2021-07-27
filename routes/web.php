@@ -77,6 +77,10 @@ Route::get('/get-schedule', [App\Http\Controllers\Student\StudentScheduleControl
 
 
 //ADMINISTRATOR
+//LOGIN ADMINISTRATOR
+Route::get('/student-login', [App\Http\Controllers\Student\StudentLoginController::class, 'index']);
+
+
 
 //LOGIN OF PANEL CONTROLLER
 //Route::post('/panel', [App\Http\Controllers\Administrator\PanelLoginController::class, 'index'])->name('panel');

@@ -61,7 +61,7 @@
                 </b-navbar-item>
             </b-navbar-dropdown>
 
-            <b-navbar-dropdown label="Admission">
+            <!-- <b-navbar-dropdown label="Admission">
                 <b-navbar-item href="/panel/admit-student">
                     Admit Student
                 </b-navbar-item>
@@ -70,7 +70,7 @@
                     General Report
                 </b-navbar-item>
                 
-            </b-navbar-dropdown>
+            </b-navbar-dropdown> -->
 
             <b-navbar-item href="/panel/user">
                 User

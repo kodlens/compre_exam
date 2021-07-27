@@ -28,6 +28,11 @@
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+
+//Login Student
+Vue.component('login-student', require('./components/LoginStudent.vue').default);
+
+
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 Vue.component('csrf', require('./components/Csrf.vue').default);
@@ -55,7 +60,6 @@ Vue.component('welcome-page', require('./components/WelcomePage.vue').default);
 
 //-----------------------------//
 //ADMINISTRATOR AREA
-
 //ADMINISTRATOR
 Vue.component('panel-login', require('./components/Administrator/PanelLogin.vue').default);
 Vue.component('panel-home', require('./components/Administrator/PanelHome.vue').default);
@@ -68,8 +72,6 @@ Vue.component('panel-question-create', require('./components/Administrator/Quest
 //ACAD YEAR
 Vue.component('acad-year', require('./components/Administrator/AcadYear/AcadYear.vue').default);
 //Vue.component('test-schedule-create', require('./components/Administrator/TestSchedule/TestScheduleCreate.vue').default);
-
-
 
 
 //SCHEDULES
@@ -85,13 +87,10 @@ Vue.component('student-schedule-edit', require('./components/Administrator/Stude
 Vue.component('student-section-taken', require('./components/Administrator/StudentSectionTaken/StudentSectionTaken.vue').default);
 
 
-
 //MODAL COMPONENT
 Vue.component('modal-schedule', require('./components/Administrator/StudentSchedule/Modal/ModalSchedule.vue').default);
 Vue.component('modal-browse-student', require('./components/Administrator/StudentSchedule/Modal/ModalBrowseStudent.vue').default);
 //Vue.component('modal-users', require('./components/Administrator/StudentSchedule/Modal/ModalUser.vue').default);
-
-
 
 
 //SECTION

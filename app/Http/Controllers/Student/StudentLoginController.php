@@ -21,9 +21,9 @@ class StudentLoginController extends Controller
 //        return view('student.login');
 //    }
 
-    public function showLoginForm()
+    public function index()
     {
-        return view('student.login');
+        return view('auth.login-student');
     }
 
     // public function guard()
