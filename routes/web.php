@@ -78,7 +78,8 @@ Route::get('/get-schedule', [App\Http\Controllers\Student\StudentScheduleControl
 
 //ADMINISTRATOR
 //LOGIN ADMINISTRATOR
-Route::get('/student-login', [App\Http\Controllers\Student\StudentLoginController::class, 'index']);
+Route::get('/admin-login', [App\Http\Controllers\Administrator\AdminLoginController::class, 'index']);
+Route::post('/admin-login', [App\Http\Controllers\Administrator\AdminLoginController::class, 'authenticate']);
 
 
 
@@ -200,25 +201,25 @@ Route::get('/app/logout/admin', function(){
 });
 
 
-Route::get('/date', function(){
+// Route::get('/date', function(){
 
-    $nDateTime = Carbon::now()->toDateTimeString();
+//     $nDateTime = Carbon::now()->toDateTimeString();
 
-    $is_allow = DB::table('test_schedules as a')
-        ->join('student_schedules as b', 'a.test_schedule_id', 'b.test_schedule_id')
-        ->where('a.from', '<=',$nDateTime)
-        ->where('a.to', '>=', $nDateTime)
-        ->where('b.user_id', 31)
-        ->exists();
-    //$isVisitedSection =
+//     $is_allow = DB::table('test_schedules as a')
+//         ->join('student_schedules as b', 'a.test_schedule_id', 'b.test_schedule_id')
+//         ->where('a.from', '<=',$nDateTime)
+//         ->where('a.to', '>=', $nDateTime)
+//         ->where('b.user_id', 31)
+//         ->exists();
+//     //$isVisitedSection =
 
-    return $is_allow;
+//     return $is_allow;
 
-//    if(!$is_allow){
-//        return redirect('/home')
-//            ->with('error', 'not_scheduled');
-//    }
-});
+// //    if(!$is_allow){
+// //        return redirect('/home')
+// //            ->with('error', 'not_scheduled');
+// //    }
+// });
 
 //Route::get('/app/test', function(){
 //

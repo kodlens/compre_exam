@@ -30,7 +30,6 @@
 
 
 //Login Student
-Vue.component('login-student', require('./components/LoginStudent.vue').default);
 
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
@@ -61,7 +60,10 @@ Vue.component('welcome-page', require('./components/WelcomePage.vue').default);
 //-----------------------------//
 //ADMINISTRATOR AREA
 //ADMINISTRATOR
-Vue.component('panel-login', require('./components/Administrator/PanelLogin.vue').default);
+
+Vue.component('admin-login', require('./components/AdminLogin.vue').default);
+
+// Vue.component('panel-login', require('./components/Administrator/PanelLogin.vue').default);
 Vue.component('panel-home', require('./components/Administrator/PanelHome.vue').default);
 Vue.component('admin-navbar', require('./components/Administrator/AdminNavbar.vue').default);
 

@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <student-login-page></student-login-page>
+        <admin-login></admin-login>
     </div>
 </body>
 </html>

@@ -7,21 +7,21 @@
                         <div class="column is-6-desktop is-offset-3-desktop is-8-tablet is-offset-2-tablet">
                             <div class="panel is-primary">
                                 <div class="panel-heading">
-                                    ADMINISTRATOR LOGIN
+                                    STUDENT LOGIN
                                 </div>
                                 <form @submit.prevent="submit">
                                     <div class="panel-body">
                                         
-                                        <b-field label="USERNAME" label-position="on-border" style="margin-bottom: 30px;">
-                                            <b-input type="text" class="input-login" v-model="fields.username" placeholder="ID No." required></b-input>
+                                        <b-field label="STUDENT ID NO." label-position="on-border" style="margin-bottom: 30px;">
+                                            <b-input type="text" class="input-login" v-model="fields.StudID" placeholder="ID No." required></b-input>
                                         </b-field>
                                        
                                         <b-field label="PASSWORD" label-position="on-border">
                                             <b-input type="password" v-model="fields.password" password-reveal placeholder="Password" required></b-input>
                                         </b-field>
 
-                                        <div v-if="this.errors.username">
-                                            <span style="color:red; font-weight: bold;">{{ this.errors.username[0] }}</span>
+                                        <div v-if="this.errors.StudID">
+                                            <span style="color:red; font-weight: bold;">{{ this.errors.StudID[0] }}</span>
                                         </div>
 
                                         <div class="buttons mt-5">
@@ -44,7 +44,7 @@ export default{
     data(){
         return{
             fields: {
-
+               
             },
             errors: {},
 

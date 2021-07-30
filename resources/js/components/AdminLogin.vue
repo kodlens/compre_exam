@@ -7,7 +7,7 @@
                         <div class="column is-6-desktop is-offset-3-desktop is-8-tablet is-offset-2-tablet">
                             <div class="panel is-primary">
                                 <div class="panel-heading">
-                                    STUDENT LOGIN HERE
+                                    ADMINISTRATOR LOGIN
                                 </div>
                                 <form @submit.prevent="submit">
                                     <div class="panel-body">
@@ -46,7 +46,7 @@ export default{
     data(){
         return{
             fields: {
-
+              
             },
             errors: {},
 
@@ -62,7 +62,7 @@ export default{
         submit(){
             this.btnClass['is-loading'] = true;
 
-            axios.post('/login', this.fields).then(res=>{
+            axios.post('/admin-login', this.fields).then(res=>{
                 this.fields = {};
                 this.btnClass['is-loading'] = false;
                 window.location = '/login';
