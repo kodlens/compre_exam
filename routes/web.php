@@ -55,6 +55,7 @@ Route::get('/barangays', [App\Http\Controllers\AddressController::class, 'barang
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 Route::get('/section', [App\Http\Controllers\Student\SectionPageController::class, 'index']);
 Route::resource('/section-question', App\Http\Controllers\Student\SectionQuestionController::class);
 

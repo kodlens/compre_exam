@@ -22,31 +22,31 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                 if($guard == 'admin'){
-                     return redirect('/panel/home');
-                 }
-                 if($guard == 'student'){
-                     return redirect('/home');
-                 }
-                //return redirect(RouteServiceProvider::HOME);
-//                $role = Auth::user()->role;
-//                if(strtolower($role) === 'administrator' || strtolower($role) === 'staff'){
-//                    return redirect('/panel/home');
-//                }
-//
-//                if(strtolower($role) === 'student'){
-//                    return redirect('/home');
-//                }
-            }
+//            if (Auth::guard($guard)->check()) {
+//                 if($guard == 'admin'){
+//                     return redirect('/panel/home');
+//                 }
+//                 if($guard == 'student'){
+//                     return redirect('/home');
+//                 }
+//                //return redirect(RouteServiceProvider::HOME);
+////                $role = Auth::user()->role;
+////                if(strtolower($role) === 'administrator' || strtolower($role) === 'staff'){
+////                    return redirect('/panel/home');
+////                }
+////
+////                if(strtolower($role) === 'student'){
+////                    return redirect('/home');
+////                }
+//            }
 
-//            if (Auth::guard('student')->check()) {
-//                return redirect('/home');
-//            }
+            if (Auth::guard('student')->check()) {
+                return redirect('/home');
+            }
 //
-//            if (Auth::guard('admin')->check()) {
-//                return redirect('/panel-home');
-//            }
+            if (Auth::guard('admin')->check()) {
+                return redirect('/panel/home');
+            }
         }
 
         return $next($request);

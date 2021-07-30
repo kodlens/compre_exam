@@ -23,16 +23,19 @@ class TakingExamController extends Controller
 
     public function __construct()
     {
-        $this->middleware('verified');
-        $this->middleware('allow_exam');
+        $this->middleware('auth:student');
+        //$this->middleware('allow_exam');
     }
 
 
     public function index(Request $req){
 
+
+
         $section_id = $req->section_id;
         $student_schedule_id = $req->schedule_id;
         //return $section_id . ' - ' . $schedule_id;
+
 
         $user_id = auth()->user()->user_id;
         $ay = AcadYear::where('active', 1)->first();

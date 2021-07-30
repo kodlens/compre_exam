@@ -12,7 +12,7 @@
             <form method="POST" id="form-taking-exam" action="/taking-exam">
                 <csrf></csrf>
                 <!--student_schedule_id -->
-                <input type="hidden" id="schedule_id" name="schedule_id" />
+<!--                <input type="hidden" id="schedule_id" name="schedule_id" />-->
                 <input type="hidden" id="section_id" name="section_id" />
             </form>
         </div>
@@ -38,10 +38,10 @@ export default {
 
         proceedTakingExam: function (schedId, sectionId){
             let form = document.getElementById('form-taking-exam');
-            let var1 = document.getElementById('schedule_id').value = schedId;
-            let var2 = document.getElementById('section_id').value = sectionId;
+            //let var1 = document.getElementById('schedule_id').value = schedId;
+            let section_id = document.getElementById('section_id').value = sectionId;
 
-            if(var1 && var2){
+            if(section_id){
                 form.submit();
             }else{
                 alert('An error occured. Please check your internet connectivity and start the step from home page. If' +

@@ -31,11 +31,8 @@ class AllowExam
 
         if(Auth::check()){
 
-            $is_allow = DB::table('test_schedules as a')
-                ->join('student_schedules as b', 'a.test_schedule_id', 'b.test_schedule_id')
-                ->where('a.from', '<=',$nDateTime)
-                ->where('a.to', '>=', $nDateTime)
-                ->where('b.user_id', $userid)
+            $is_allow = DB::table('sections as a')
+                ->where('a.', $userid)
                 ->exists();
 
             $isVisitedSection = TakingTest::where('acad_year_id', $acadyear->acad_year_id)
