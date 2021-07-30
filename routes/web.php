@@ -27,7 +27,7 @@ Route::get('/', function () {
 Auth::routes([
     'register' => true,
     'login' => true,
-    'verify' => true
+    'verify' => false
 ]);
 
 
@@ -80,14 +80,6 @@ Route::get('/get-schedule', [App\Http\Controllers\Student\StudentScheduleControl
 //LOGIN ADMINISTRATOR
 Route::get('/admin-login', [App\Http\Controllers\Administrator\AdminLoginController::class, 'index']);
 Route::post('/admin-login', [App\Http\Controllers\Administrator\AdminLoginController::class, 'authenticate']);
-
-
-
-//LOGIN OF PANEL CONTROLLER
-//Route::post('/panel', [App\Http\Controllers\Administrator\PanelLoginController::class, 'index'])->name('panel');
-//Route::get('/panel/login', [App\Http\Controllers\Administrator\PanelLoginController::class, 'showLoginForm']);
-//Route::post('/panel/login', [App\Http\Controllers\Administrator\PanelLoginController::class, 'login'])->name('panel-login');
-
 
 Route::get('/panel/home', [App\Http\Controllers\Administrator\PanelHomeController::class, 'index']);
 
@@ -192,6 +184,7 @@ Route::get('/session-test', function(Request $req){
 
 Route::get('/app/logout', function(){
     Auth::guard('student')->logout();
+    Session::flush();
     Auth::logout();
 });
 

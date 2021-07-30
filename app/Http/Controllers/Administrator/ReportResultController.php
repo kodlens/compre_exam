@@ -22,7 +22,7 @@ class ReportResultController extends Controller
 {
     //
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
        //$this->middleware('admin');
         $this->middleware('staff');
     }
@@ -141,7 +141,7 @@ class ReportResultController extends Controller
         //return $req->fields;
 
         try {
-            
+
             //update if email exist.. if not create new record
              Gadtest::updateOrCreate(
                  [
@@ -173,7 +173,7 @@ class ReportResultController extends Controller
             User::where('user_id', $req->fields['user_id'])
                 ->update(['is_submitted' => 1]);
 
-           
+
 
 
             return ['status' => 'mailed'];

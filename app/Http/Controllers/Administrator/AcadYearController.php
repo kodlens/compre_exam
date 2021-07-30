@@ -11,7 +11,7 @@ class AcadYearController extends Controller
 {
     //
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
         $this->middleware('admin');
     }
 
@@ -52,7 +52,7 @@ class AcadYearController extends Controller
         $validate = $req->validate([
             'code' => ['string', 'max:100', 'required', 'unique:acad_years,code,'.$id.',acad_year_id'],
             'description' => ['string', 'max:100', 'required'],
-            
+
         ]);
 
         AcadYear::where('acad_year_id', $id)

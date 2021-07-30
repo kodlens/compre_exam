@@ -11,19 +11,17 @@
                                 </div>
                                 <form @submit.prevent="submit">
                                     <div class="panel-body">
-                                        
-                                        <b-field label="STUDENT ID NO." label-position="on-border" style="margin-bottom: 30px;">
-                                            <b-input type="text" class="input-login" v-model="fields.StudID" placeholder="ID No." required></b-input>
+
+                                        <b-field label="USERNAME" label-position="on-border" style="margin-bottom: 30px;">
+                                            <b-input type="text" class="input-login" v-model="fields.username" placeholder="Username"></b-input>
                                         </b-field>
-                                       
-                                        
 
                                         <b-field label="PASSWORD" label-position="on-border">
                                             <b-input type="password" v-model="fields.password" password-reveal placeholder="Password" required></b-input>
                                         </b-field>
 
-                                        <div v-if="this.errors.StudID">
-                                            <span style="color:red; font-weight: bold;">{{ this.errors.StudID[0] }}</span>
+                                        <div v-if="this.errors.username">
+                                            <span style="color:red; font-weight: bold;">{{ this.errors.username[0] }}</span>
                                         </div>
 
                                         <div class="buttons mt-5">
@@ -46,7 +44,8 @@ export default{
     data(){
         return{
             fields: {
-              
+                username: 'admin',
+                password: 'a112233'
             },
             errors: {},
 
@@ -65,7 +64,9 @@ export default{
             axios.post('/admin-login', this.fields).then(res=>{
                 this.fields = {};
                 this.btnClass['is-loading'] = false;
-                window.location = '/login';
+                if(res.data.status === 'success'){
+                    window.location = '/panel/home';
+                }
             }).catch(error=>{
                 this.btnClass['is-loading'] = false;
                 if(error.response.status === 422){
@@ -85,5 +86,5 @@ export default{
         border: none !important;
     }
 
-    
+
 </style>

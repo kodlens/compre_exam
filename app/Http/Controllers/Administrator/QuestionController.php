@@ -23,7 +23,7 @@ class QuestionController extends Controller
 {
     //
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
         $this->middleware('admin');
     }
 
@@ -102,7 +102,7 @@ class QuestionController extends Controller
 
             $counter = 0;
             $optionImg = $req->optionImg;
-            
+
 
             foreach($options as $row){
                 if($row->is_img > 0){
@@ -147,8 +147,8 @@ class QuestionController extends Controller
     }
 
     public function update(Request $req, $id){
-        
-        
+
+
 
         $validate = $req->validate([
             //'order_no' => ['required', 'numeric', Rule::unique('questions')->ignore($id, 'question_id')],

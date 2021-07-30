@@ -13,8 +13,9 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('verified');
-        $this->middleware('student');
+        $this->middleware('auth:student');
+        //$this->middleware('verified');
+        //$this->middleware('student');
     }
 
     /**

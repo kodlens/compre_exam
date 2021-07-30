@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable 
+class User extends Authenticatable //implements MustVerifyEmail
 {
     //implements MustVerifyEmail
-    use HasFactory, Notifiable;
+    use HasFactory; //Notifiable;
 
+    //User Model for Student Table
 
     /**
      * The attributes that are mass assignable.
@@ -20,47 +21,47 @@ class User extends Authenticatable
      */
 
 
-    
-    // protected $guard = 'admin';
 
-    // protected $table = 'users';
-    // protected $primaryKey = 'user_id'; //the fuck.. nahurot akong adlaw nimo ..
+     protected $guard = 'admin';
 
-    // protected $fillable = [
-    //     'username', 'lname', 'fname', 'mname', 'sex',
-    //     'status',
-    //     'bdate',
-    //     'birthplace', 'contact_no',
-    //     'email',
-    //     'first_program_choice', 'second_program_choice',
-    //     'learning_mode',
-    //     'last-school_attended',
-    //     'province', 'city', 'barangay', 'barangay_id', 'street',
-    //     'password', 'role'
-    // ];
+     protected $table = 'users';
+     protected $primaryKey = 'user_id'; //the fuck.. nahurot akong adlaw nimo ..
 
-
+     protected $fillable = [
+         'username', 'lname', 'fname', 'mname', 'sex',
+         'status',
+         'bdate',
+         'birthplace', 'contact_no',
+         'email',
+         'first_program_choice', 'second_program_choice',
+         'learning_mode',
+         'last-school_attended',
+         'province', 'city', 'barangay', 'barangay_id', 'street',
+         'password', 'role'
+     ];
 
 
-    protected $connection = 'registrar_gadtc';
-    protected $table ='tblstudhinfo';
-    protected $primaryKey = 'StudID';
 
 
-    public $incrementing = false; //if primary key is non-numeric
-    // If you wish to use a non-incrementing or a non-numeric primary key 
-    // you must define a public $incrementing property 
-    // on your model that is set to false:
-    
-
-    protected $keyType = 'string'; 
-    //If your model's primary key is not an integer, 
-    //you should define a protected $keyType property on your model. 
-    //This property should have a value of string:
-
-    protected $fillable = [
-        'StudID', 'username', 'StudLname', 'StudFname', 'StudMname', 'StudSex', 'email', 'password'
-   ];
+//    protected $connection = 'registrar_gadtc';
+//    protected $table ='tblstudhinfo';
+//    protected $primaryKey = 'StudID';
+//
+//
+//    public $incrementing = false; //if primary key is non-numeric
+//    // If you wish to use a non-incrementing or a non-numeric primary key
+//    // you must define a public $incrementing property
+//    // on your model that is set to false:
+//
+//
+//    protected $keyType = 'string';
+//    //If your model's primary key is not an integer,
+//    //you should define a protected $keyType property on your model.
+//    //This property should have a value of string:
+//
+//    protected $fillable = [
+//        'StudID', 'username', 'StudLname', 'StudFname', 'StudMname', 'StudSex', 'email', 'password'
+//   ];
 
 
     /**

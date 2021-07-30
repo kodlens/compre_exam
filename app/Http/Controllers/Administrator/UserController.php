@@ -16,7 +16,7 @@ class UserController extends Controller
     //
 
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
         $this->middleware('admin');
     }
 
@@ -25,7 +25,7 @@ class UserController extends Controller
     }
 
     public function index_data(Request $req){
-        
+
         $sort = explode('.', $req->sort_by);
         return User::where('lname', 'like', $req->lname . '%')
             ->where('fname', 'like', $req->fname . '%')

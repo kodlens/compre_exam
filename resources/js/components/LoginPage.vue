@@ -44,7 +44,8 @@ export default{
     data(){
         return{
             fields: {
-               
+               StudID : '179186',
+               password: 'JanMark22',
             },
             errors: {},
 

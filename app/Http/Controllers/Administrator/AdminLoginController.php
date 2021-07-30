@@ -29,22 +29,29 @@ class AdminLoginController extends Controller
     // public function guard()
     // {
     //     return Auth::guard('student');
-    // 
+    //
 
     public function authenticate(Request $request)
     {
-        return $request;
+        //return $request;
 
         $validate = $request->validate([
-            'StudID' => ['string', 'max:100', 'required'],
+            'username' => ['string', 'max:100', 'required'],
             'password' => ['string', 'max:255', 'required'],
         ]);
-        $credentials = $request->only('StudID', 'password');
 
-        if (Auth::guard('student')->attempt($credentials)) {
+        $credentials = $request->only('username', 'password');
+
+        if (Auth::guard('admin')->attempt($credentials)) {
             // Authentication passed...
             //return redirect()->intended('/home');
-            return 'success';
+            return response()->json([
+                'status' => 'success'
+            ], 200);
+        }else{
+            return response()->json([
+                'errors' => ['username' => [0 => 'Username and password error.']]
+            ], 422);
         }
     }
 

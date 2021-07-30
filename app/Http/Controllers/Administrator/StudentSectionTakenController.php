@@ -17,7 +17,7 @@ class StudentSectionTakenController extends Controller
     //
 
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
         $this->middleware('admin');
     }
 
@@ -46,7 +46,7 @@ class StudentSectionTakenController extends Controller
     }
 
     public function deleteTaken(Request $req){
-        
+
         //return $req;
         TakingTest::where('taking_test_id', $req->taking_test_id)
             ->delete();
