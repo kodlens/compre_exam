@@ -16,8 +16,7 @@ class TakingTest extends Model
     protected $fillable = [
         'acad_year_id',
         'user_id',
-        'section_id',
-        'student_schedule_id'
+        'section_id'
     ];
 
 }

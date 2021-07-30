@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v12.14 (64 bit)
-MySQL - 5.7.33-0ubuntu0.16.04.1 : Database - itecompre
+MySQL - 10.4.13-MariaDB : Database - itecompre
 *********************************************************************
 */
 
@@ -24,7 +24,7 @@ CREATE TABLE `acad_years` (
   `acad_year_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `active` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`acad_year_id`),
@@ -47,7 +47,7 @@ CREATE TABLE `answer_sheets` (
   `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint(20) unsigned NOT NULL,
   `section_id` bigint(20) unsigned NOT NULL,
-  `is_taken` tinyint(1) NOT NULL DEFAULT '0',
+  `is_taken` tinyint(1) NOT NULL DEFAULT 0,
   `date_taken` datetime NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -88,7 +88,7 @@ CREATE TABLE `failed_jobs` (
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -169,10 +169,10 @@ CREATE TABLE `options` (
   `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `question_id` bigint(20) unsigned NOT NULL,
   `letter` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci,
-  `is_img` tinyint(1) NOT NULL DEFAULT '0',
+  `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_img` tinyint(1) NOT NULL DEFAULT 0,
   `img_path` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_answer` tinyint(1) NOT NULL DEFAULT '0',
+  `is_answer` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`option_id`),
@@ -840,9 +840,9 @@ CREATE TABLE `questions` (
   `acad_year_id` bigint(20) unsigned NOT NULL,
   `section_id` bigint(20) unsigned NOT NULL,
   `question` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_question_img` tinyint(1) NOT NULL DEFAULT '0',
+  `is_question_img` tinyint(1) NOT NULL DEFAULT 0,
   `question_img` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `set_time` int(11) NOT NULL DEFAULT '10',
+  `set_time` int(11) NOT NULL DEFAULT 10,
   `score` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -1006,7 +1006,7 @@ insert  into `questions`(`question_id`,`acad_year_id`,`section_id`,`question`,`i
 DROP TABLE IF EXISTS `registration`;
 
 CREATE TABLE `registration` (
-  `is_open` tinyint(4) NOT NULL DEFAULT '1',
+  `is_open` tinyint(4) NOT NULL DEFAULT 1,
   PRIMARY KEY (`is_open`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -1022,8 +1022,10 @@ DROP TABLE IF EXISTS `sections`;
 CREATE TABLE `sections` (
   `section_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `section` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `allow_program` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `img_filename` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `set_time` int(11) NOT NULL DEFAULT '10',
+  `set_time` int(11) NOT NULL DEFAULT 10,
+  `is_allow` tinyint(4) DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`section_id`),
@@ -1033,13 +1035,13 @@ CREATE TABLE `sections` (
 
 /*Data for the table `sections` */
 
-insert  into `sections`(`section_id`,`section`,`img_filename`,`set_time`,`created_at`,`updated_at`) values 
-(1,'PROFESSIONAL EDUCATION','abstraction.svg',180,NULL,NULL),
-(2,'FILIPINO MAJOR','logical.svg',180,NULL,NULL),
-(3,'ENGLISH MAJOR','english.svg',180,NULL,NULL),
-(4,'MATH MAJOR','numerical.svg',180,NULL,NULL),
-(5,'SOCSTUD MAJOR','general.svg',180,NULL,NULL),
-(6,'BEED MAJOR','generals.svg',180,NULL,NULL);
+insert  into `sections`(`section_id`,`section`,`allow_program`,`img_filename`,`set_time`,`is_allow`,`created_at`,`updated_at`) values 
+(1,'PROFESSIONAL EDUCATION','ALL','abstraction.svg',180,1,NULL,NULL),
+(2,'FILIPINO MAJOR','BSED-FIL','logical.svg',180,1,NULL,NULL),
+(3,'ENGLISH MAJOR','BSED-ENGL','english.svg',180,1,NULL,NULL),
+(4,'MATH MAJOR','BSED-MATH','numerical.svg',180,1,NULL,NULL),
+(5,'SOCSTUD MAJOR','BSED-SOCSTUD','general.svg',180,1,NULL,NULL),
+(6,'BEED MAJOR','BEED','generals.svg',180,1,NULL,NULL);
 
 /*Table structure for table `sessions` */
 
@@ -1049,7 +1051,7 @@ CREATE TABLE `sessions` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned DEFAULT NULL,
   `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` text COLLATE utf8mb4_unicode_ci,
+  `user_agent` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `payload` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -1087,13 +1089,20 @@ CREATE TABLE `taking_test` (
   `acad_year_id` bigint(20) unsigned NOT NULL,
   `user_id` bigint(20) unsigned NOT NULL,
   `section_id` bigint(20) unsigned NOT NULL,
-  `student_schedule_id` bigint(20) unsigned NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`taking_test_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=331 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=337 DEFAULT CHARSET=latin1;
 
 /*Data for the table `taking_test` */
+
+insert  into `taking_test`(`taking_test_id`,`acad_year_id`,`user_id`,`section_id`,`created_at`,`updated_at`) values 
+(331,3,203379,1,'2021-07-30 16:55:12','2021-07-30 16:55:12'),
+(332,3,203379,1,'2021-07-30 16:55:27','2021-07-30 16:55:27'),
+(333,3,203379,1,'2021-07-30 16:55:51','2021-07-30 16:55:51'),
+(334,3,203379,1,'2021-07-30 16:57:01','2021-07-30 16:57:01'),
+(335,3,203379,3,'2021-07-30 16:57:09','2021-07-30 16:57:09'),
+(336,3,203379,1,'2021-07-30 16:57:19','2021-07-30 16:57:19');
 
 /*Table structure for table `test_schedules` */
 
@@ -1105,13 +1114,13 @@ CREATE TABLE `test_schedules` (
   `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `from` datetime DEFAULT NULL,
   `to` datetime DEFAULT NULL,
-  `max_user` int(11) DEFAULT '30',
-  `active` tinyint(4) DEFAULT '1',
+  `max_user` int(11) DEFAULT 30,
+  `active` tinyint(4) DEFAULT 1,
   `nt_user` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`test_schedule_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=190 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `test_schedules` */
 
@@ -1149,7 +1158,7 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `is_submitted` tinyint(4) DEFAULT '0',
+  `is_submitted` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `users_username_unique` (`username`),
   UNIQUE KEY `users_email_unique` (`email`)
