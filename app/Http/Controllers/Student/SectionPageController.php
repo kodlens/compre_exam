@@ -17,6 +17,7 @@ class SectionPageController extends Controller
 
     public function index(){
 
+
         $user_program = Auth::user()->StudCourse;
 
         $sections = Section::where('allow_program', 'ALL')

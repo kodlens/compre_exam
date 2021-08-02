@@ -45,7 +45,7 @@ export default{
         return{
             fields: {},
             errors: {},
-
+            
             btnClass: {
                 'button': true,
                 'is-primary': true,

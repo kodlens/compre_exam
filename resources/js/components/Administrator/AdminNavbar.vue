@@ -72,9 +72,9 @@
                 
             </b-navbar-dropdown> -->
 
-            <!-- <b-navbar-item href="/panel/user">
+            <b-navbar-item href="/panel/user">
                 User
-            </b-navbar-item> -->
+            </b-navbar-item>
 
             <b-navbar-item tag="div">
                 <div class="buttons">

@@ -1,8 +1,17 @@
 <template>
     <div>
         <div class="section">
+
+            <b-notification v-if="notAllowed == 1" class="is-danger">
+                EXAM IS CLOSE.
+            </b-notification>
+
+            <b-notification v-if="isExist == 1" class="is-danger">
+                ALREADY TAKEN THE EXAM.
+            </b-notification>
+
             <div class="section-wrapper">
-                <div v-for="(item, index) in sectionsJSON" :key="index" @click="proceedTakingExam(schedid, item.section_id)" class="img-wrapper">
+                <div v-for="(item, index) in sectionsJSON" :key="index" @click="proceedTakingExam(item.section_id)" class="img-wrapper">
                     <img :src="'/img/' + item.img_filename" class="img-size" alt="..." />
                     <p>SECTION: {{ item.section }}</p>
                     <p>TIME: {{ item.set_time }} minutes</p>
@@ -11,8 +20,6 @@
 
             <form method="POST" id="form-taking-exam" action="/taking-exam">
                 <csrf></csrf>
-                <!--student_schedule_id -->
-<!--                <input type="hidden" id="schedule_id" name="schedule_id" />-->
                 <input type="hidden" id="section_id" name="section_id" />
             </form>
         </div>
@@ -23,7 +30,7 @@
 
 
 export default {
-    props:['sections', 'schedid'],
+    props:['sections', 'notAllowed', 'isExist'],
 
     data(){
         return{
@@ -36,7 +43,7 @@ export default {
             this.sectionsJSON = JSON.parse(this.sections);
         },
 
-        proceedTakingExam: function (schedId, sectionId){
+        proceedTakingExam: function (sectionId){
             let form = document.getElementById('form-taking-exam');
             //let var1 = document.getElementById('schedule_id').value = schedId;
             let section_id = document.getElementById('section_id').value = sectionId;

@@ -4,7 +4,7 @@
             <div class="container">
                 <form @submit.prevent="submit">
                     <div class="columns">
-                        <div class="column is-10 is-offset-1">
+                        <div class="column is-6 is-offset-3">
 
                             <div class="instruction-container">
                                 <div>
@@ -14,25 +14,25 @@
                                 </div>
                             </div>
 
-                            <div class="question-box" v-show="isShow" v-for="(item, i) in questions" :key="i">
+                            <div class="question-box" v-show="isShow">
                                 <!--question content-->
-                                <div class="question-content">{{ i + 1 }}.)
-                                    <span v-if="item.is_question_img == 0">{{item.question}}</span>
+                                <div class="question-content">{{ questionCounter + 1 }}.)
+                                    <span v-if="questions[questionCounter].is_question_img == 0">{{questions[questionCounter].question}}</span>
 
-                                    <div v-else class="question-img">
-                                        <img :src="`/storage/q/`+item.question_img" alt="...">
-                                    </div>
+                                    <!-- <div v-else class="question-img">
+                                        <img :src="`/storage/q/`+questions[questionCounter].question_img" alt="...">
+                                    </div> -->
                                 </div>
                                 <!--question content-->
 
                                 <!--option content-->
-                                <div class="option-container">
-                                    <div class="option-content" v-for="(option, k) in item.options" :key="k">
+                                <div class="column">
+                                    <div class="columns" v-for="(option, k) in questions[questionCounter].options" :key="k">
                                         <!--if question is text-->
                                         <div v-if="option.is_img == 0">
                                             <b-field>
                                                 <b-radio
-                                                    v-model="answers[i]"
+                                                    v-model="answers[questionCounter]"
                                                     :native-value="option.option_id">
                                                     {{option.letter}} - {{ option.content }}
                                                 </b-radio>
@@ -43,7 +43,7 @@
                                         <div v-else>
                                             <b-field>
                                                 <b-radio
-                                                    v-model="answers[i]" required
+                                                    v-model="answers[questionCounter]" required
                                                     :native-value="option.option_id">
 
                                                     <div>{{option.letter}}. </div>
@@ -56,12 +56,15 @@
                                     <!--option content-->
                                 </div><!--option container-->
 
-
+                                <div class="buttons mt-5">
+                                    <div class="button is-success is-fullwidth" v-if="this.questions.length > this.questionCounter + 1" @click="next">NEXT</div>
+                                    <div :class="btnClass" v-else @click="submit">DONE</div>
+                                </div>
                             </div><!--question-box-->
 
-                            <div class="buttons is-right mb-5">
+                            <!-- <div class="buttons is-right mb-5">
                                 <button :class="btnClass">SUBMIT ANSWER</button>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div> <!--columns-->
@@ -72,7 +75,6 @@
         <form id="form-section" action="/section" method="POST">
             <csrf></csrf>
             <input type="hidden" name="student_schedule_id" v-model="student_schedule_id" />
-
         </form>
 
         <div class="timer-container">
@@ -88,13 +90,16 @@ export default {
     props: ['sectionId', 'studentschedId'],
     data(){
         return{
-            questions: [],
+            questionCounter: 0,
+            questions: [{}],
             errors: {},
             answers:{},
             btnClass:{
                 'button': true,
                 'is-success': true,
-                'is-loading': false
+                'is-loading': false,
+                'is-fullwidth' : true,
+
             },
 
             isShow: true,
@@ -102,25 +107,27 @@ export default {
             nTime: '',
 
             student_schedule_id: 0,
+
+            s: null,
         }
     },
     methods: {
-        loadQuestion: async function(){
+        loadQuestion: function(){
 
             this.student_schedule_id = this.studentschedId;
 
-            await axios.get('/taking-exam-question/'+this.sectionId).then(res=>{
+            axios.get('/taking-exam-question/'+this.sectionId).then(res=>{
                 //5pxconsole.log(res.data);
                 this.questions = res.data;
+                this.startTimer(this.questions[0].set_time);
             });
         },
 
         startTimer(duration) {
-
-            duration = duration * 60;
+           clearInterval(this.s);
+            //duration = duration * 60;
             var timer = duration, minutes, seconds;
-
-            var s = setInterval( ()=> {
+            this.s = setInterval( ()=> {
                 //use arrow function so this keyword will refer to window.variable
                 minutes = parseInt(timer / 60, 10);
                 seconds = parseInt(timer % 60, 10);
@@ -133,12 +140,30 @@ export default {
                 if (--timer < 0) {
                     timer = duration;
                     //alert('done');
-                    clearInterval(s)
-                    console.log('stop');
-                    this.isShow = false;
+                    //clearInterval(this.s)
+                    //console.log('stop');
+                    //this.isShow = false;
                     //this.submit();
+                    this.next();
                 }
             }, 1000);
+        },
+
+        next: function(){
+
+            if(this.questions.length-1 < this.questionCounter + 1){
+                clearInterval(this.s);
+                this.submit();
+                return;
+            }
+
+            this.questionCounter = this.questionCounter + 1; //naglabad akong ulo nimo...
+            this.startTimer(this.questions[this.questionCounter].set_time);
+            console.log(this.questionCounter);
+        },
+
+        done: function(){
+           console.log("done");
         },
 
         submit(){
@@ -153,7 +178,7 @@ export default {
                         title: 'SAVED.',
                         message: 'Your test successfully saved.',
                         confirmText: 'OK',
-                        onConfirm: ()=> this.proceedToSectionPage()
+                        onConfirm: ()=> window.location = '/result-exam'
                     });
                 }
                 if(res.data.status === 'exist'){
@@ -181,19 +206,9 @@ export default {
             });
         },
 
-        proceedToSectionPage: function(){
-            if(this.student_schedule_id){
-                document.getElementById('form-section').submit();
-            }else{
-                alert('An error occured. No Schedule detected. If this error occured, please take screenshots and contact the admin.');
-            }
-        }
-
     },
     mounted(){
-        this.loadQuestion().then(()=>{
-            this.startTimer(10);
-        });
+        this.loadQuestion();
 
     },
 }

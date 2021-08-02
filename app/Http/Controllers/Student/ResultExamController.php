@@ -15,7 +15,7 @@ class ResultExamController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('verified');
+        $this->middleware('auth:student');
         $this->middleware('student');
         //$this->middleware('allow_exam');
     }
@@ -26,14 +26,14 @@ class ResultExamController extends Controller
 
     public function resultExam(){
 
-        $userid = Auth::user()->user_id;
+        $student_id = Auth::user()->StudID;
         $ay = AcadYear::where('active', 1)->first();
 
         $data = DB::table('answers as a')
             ->join('options as b', 'a.option_id', 'b.option_id')
             ->join('answer_sheets as c', 'a.answer_sheet_id', 'c.answer_sheet_id')
             ->join('questions as d', 'b.question_id', 'd.question_id')
-            ->where('c.user_id', $userid)
+            ->where('c.student_id', $student_id)
             ->where('code', $ay->code)
             ->where('b.is_answer', 1)
             ->sum('d.score');

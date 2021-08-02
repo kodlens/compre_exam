@@ -7,14 +7,16 @@
                         <div class="column is-6-desktop is-offset-3-desktop is-8-tablet is-offset-2-tablet">
                             <div class="panel is-primary">
                                 <div class="panel-heading">
-                                    STUDENT LOGIN
+                                    STUDENT LOGIN HERE
                                 </div>
                                 <form @submit.prevent="submit">
                                     <div class="panel-body">
-
+                                        
                                         <b-field label="STUDENT ID NO." label-position="on-border" style="margin-bottom: 30px;">
                                             <b-input type="text" class="input-login" v-model="fields.StudID" placeholder="ID No." required></b-input>
                                         </b-field>
+                                       
+                                        
 
                                         <b-field label="PASSWORD" label-position="on-border">
                                             <b-input type="password" v-model="fields.password" password-reveal placeholder="Password" required></b-input>
@@ -44,7 +46,7 @@ export default{
     data(){
         return{
             fields: {
-          
+
             },
             errors: {},
 
@@ -63,7 +65,7 @@ export default{
             axios.post('/login', this.fields).then(res=>{
                 this.fields = {};
                 this.btnClass['is-loading'] = false;
-                window.location = '/home';
+                window.location = '/login';
             }).catch(error=>{
                 this.btnClass['is-loading'] = false;
                 if(error.response.status === 422){
@@ -83,5 +85,5 @@ export default{
         border: none !important;
     }
 
-
+    
 </style>

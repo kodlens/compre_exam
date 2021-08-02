@@ -51,134 +51,18 @@ export default {
     data() {
         return {
 
-            btnClass:{
-                'button': true,
-                'is-success': true,
-                'is-outlined': true,
-                'is-loading': false,
-            },
 
             isLoading: false,
 
-            schedules: {
-                from: null,
-            },
 
         }
     },
 
     methods: {
-        requestSchedule: function(){
-            this.btnClass['is-loading'] = true;
-
-            axios.post('/set-schedule').then(res=>{
-                console.log(res.data);
-                if(res.data.status === 'full'){
-                    this.$buefy.dialog.alert({
-                        title: 'NO SCHEDULE!',
-                        message: 'Sorry, no schedule found.',
-                        type: 'is-danger',
-                    });
-                     this.btnClass['is-loading'] = false;
-                }
-                if(res.data.status === 'scheduled'){
-                    this.$buefy.dialog.alert({
-                        title: 'ALREADY SCHEDULED!',
-                        message: 'You already have a schedule.',
-                        type: 'is-danger',
-                    });
-                     this.btnClass['is-loading'] = false;
-                }
-                if(res.data.status === 'schedule'){
-                    this.$buefy.dialog.alert({
-                        title: 'SCHEDULED!',
-                        message: 'You are successfully scheduled on ' + this.formatSchedFromDate(res.data.schedfrom),
-                        type: 'is-success',
-                        onConfirm: ()=> this.getSchedule()
-                    });
-                     this.btnClass['is-loading'] = false;
-                }
-                if(res.data.status === 'no_schedule'){
-                    this.$buefy.dialog.alert({
-                        title: 'NO SCHEDULE!',
-                        message: 'No new schedule found. Maybe admission test is closed.',
-                        type: 'is-danger',
-                        onConfirm: ()=> this.getSchedule()
-                    });
-                    this.btnClass['is-loading'] = false;
-                }
-            }).catch(err=>{
-                console.log(err.response);
-                 this.btnClass['is-loading'] = false;
-            })
-
-            this.btnClass['is-loading'] = false; //activate this for debugging only
-        },
-
-        formatSchedFromDate(from){
-            //moment().format()
-            //console.log(moment.format('Y-m-D'));
-            const monthNames = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"
-            ];
-
-            try {
-                //non iOS
-                let d = new Date(from);
-                let hours = d.getHours();
-                hours = hours % 12;
-                hours = hours ? hours : 12; // the hour '0' should be '12'
-                let minute = ('0' + d.getMinutes()).slice(-2);
-                let ampm = d.getHours() < 12 ? 'AM' : 'PM';
-                let monthname = d.getMonth();
-                return monthNames[monthname] + ' ' + d.getDate() + ' ' + d.getFullYear() + ' at exactly ' + hours+':'+minute+' '+ampm;
-            }
-            catch(err) {
-                return from;
-            }
-
-
-
-        },
-
-        getSchedule: function(){
-            this.isLoading = true;
-            axios.get('/get-schedule').then(res=>{
-                //console.log(res.data[0]);
-                this.schedules = res.data[0];
-                this.isLoading = false;
-            })
-        },
-
-        proceedNext: function(){
-            let form = document.getElementById('section-form');
-            //this.schedules.student_schedule_id = null; //testing only
-            if(this.schedules.student_schedule_id){
-                form.submit();
-            }else{
-                alert('Please acquire schedule first. Rest assured you have enough internet connectivity in your area and ' +
-                    'kindly reload the page. If still the problem exist, please contact CISO Personnel for this matter.');
-            }
-
-        }
+    
+   
     },
 
-    mounted(){
-        this.getSchedule();
-    },
-
-    computed:{
-
-        scheduleNiya: function(){
-
-            if(this.schedules.from){
-                return this.formatSchedFromDate(this.schedules.from);
-            }else{
-                return '';
-            }
-
-        }
-    }
 
 }
 </script>

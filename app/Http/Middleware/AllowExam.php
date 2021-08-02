@@ -25,32 +25,13 @@ class AllowExam
      */
     public function handle(Request $request, Closure $next)
     {
-        $nDateTime = Carbon::now()->toDateTimeString();
+        //$nDateTime = Carbon::now()->toDateTimeString();
         $userid = Auth::user()->user_id;
         $acadyear = AcadYear::where('active', 1)->first();
 
         if(Auth::check()){
 
-            $is_allow = DB::table('sections as a')
-                ->where('a.', $userid)
-                ->exists();
-
-            $isVisitedSection = TakingTest::where('acad_year_id', $acadyear->acad_year_id)
-                ->where('user_id', $userid)
-                ->where('section_id', $request->section_id)
-                ->where('student_schedule_id', $request->schedule_id)
-                ->exists();
-
-
-            if(!$is_allow){
-                return redirect('/home')
-                    ->with('error', 'not_scheduled');
-            }
-
-            if($isVisitedSection){
-                return redirect('/home')
-                    ->with('error', 'already_visited_section');
-            }
+            
 
             return $next($request)
                 ->header('Cache-Control','nocache, no-store, max-age=0, must-revalidate')

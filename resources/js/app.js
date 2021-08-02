@@ -136,6 +136,8 @@ Vue.component('home-page', require('./components/Student/HomePage.vue').default)
 Vue.component('section-page', require('./components/Student/SectionPage.vue').default)
 
 Vue.component('taking-exam', require('./components/Student/TakingExam.vue').default);
+Vue.component('taking-exam-by-question', require('./components/Student/TakingExamByQuestion.vue').default);
+
 Vue.component('result-exam', require('./components/Student/ResultExam.vue').default);
 
 

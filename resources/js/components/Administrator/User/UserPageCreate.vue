@@ -85,21 +85,7 @@
 
                                 </div><!--cols-->
 
-                                <div class="columns">
-                                    <div class="column">
-                                        <b-field label-position="on-border" label="Birthdate">
-                                            <b-datepicker editable v-model="bdate" @input="formatDate">
-                                            </b-datepicker>
-                                        </b-field>
-                                    </div>
-                                    <div class="column">
-                                        <b-field label-position="on-border" label="Birthplace">
-                                            <b-input type="text" v-model="fields.birthplace"></b-input>
-                                        </b-field>
-                                    </div>
-
-
-                                </div>
+                                
 
                                 <div class="columns">
                                     <div class="column">
@@ -114,16 +100,7 @@
                                         </b-field>
                                     </div>
                                 </div>
-
-                                <div class="columns">
-                                    <div class="column">
-                                        <b-field label-position="on-border" label="Last School Attended">
-                                            <b-input type="text" v-model="fields.last_school_attended" placeholder="Last School Attended"></b-input>
-                                        </b-field>
-                                    </div>
-                                </div>
-
-
+                                
                                 <div class="columns">
                                     <div class="column">
                                         <b-field label-position="on-border" label="Province">

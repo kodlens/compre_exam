@@ -71,19 +71,6 @@
                                             </b-select>
                                         </b-field>
                                     </div>
-
-                                    <div class="column">
-                                        <b-field label="Category" label-position="on-border" expanded
-                                                 :type="this.errors.status ? 'is-danger' : ''"
-                                                 :message="this.errors.status ? this.errors.status : ''">
-                                            <b-select placeholder="Category" v-model="fields.status" expanded required>
-                                                <option value="NEW">NEW</option>
-                                                <option value="RETURNEE">RETURNEE</option>
-                                                <option value="TRANSFEREE">TRANSFEREE</option>
-                                            </b-select>
-                                        </b-field>
-                                    </div>
-
                                     <div class="column">
                                         <b-field label-position="on-border" label="Role" expanded>
                                             <b-select v-model="fields.role" expanded>
@@ -92,22 +79,7 @@
                                             </b-select>
                                         </b-field>
                                     </div>
-
                                 </div><!--cols-->
-
-                                <div class="columns">
-                                    <div class="column">
-                                        <b-field label-position="on-border" label="Birthdate">
-                                            <b-datepicker v-model="bdate" @input="formatDate">
-                                            </b-datepicker>
-                                        </b-field>
-                                    </div>
-                                    <div class="column">
-                                        <b-field label-position="on-border" label="Birthplace">
-                                            <b-input type="text" v-model="fields.birthplace"></b-input>
-                                        </b-field>
-                                    </div>
-                                </div>
 
                                 <div class="columns">
                                     <div class="column">
@@ -122,48 +94,6 @@
                                         </b-field>
                                     </div>
                                 </div>
-
-                                <div class="columns">
-                                    <div class="column">
-                                        <b-field label="1st Program Choice" label-position="on-border"
-                                                 :type="this.errors.first_program_choice ? 'is-danger' : ''"
-                                                 :message="this.errors.first_program_choice ? this.errors.first_program_choice : ''" expanded>
-                                            <b-select placeholder="1st program choice" v-model="fields.first_program_choice" required expanded>
-                                                <option :value="item.CCode" v-for="(item, index) in this.programs" :key="index">{{ item.CDesc }} ({{ item.CCode }})</option>
-                                            </b-select>
-                                        </b-field>
-                                    </div>
-                                    <div class="column">
-                                        <b-field label="2nd Program Choice" label-position="on-border" expanded
-                                                 :type="this.errors.second_program_choice ? 'is-danger' : ''"
-                                                 :message="this.errors.second_program_choice ? this.errors.second_program_choice : ''">
-                                            <b-select placeholder="2nd program choice" v-model="fields.second_program_choice" required expanded>
-                                                <option :value="item.CCode" v-for="(item, index) in this.programs" :key="index">{{ item.CDesc }} ({{ item.CCode }})</option>
-                                            </b-select>
-                                        </b-field>
-                                    </div>
-                                </div>
-
-                                <div class="columns">
-                                    <div class="column">
-                                        <b-field label="Mode of Learning" label-position="on-border" expanded
-                                                 :type="this.errors.learning_mode ? 'is-danger' : ''"
-                                                 :message="this.errors.learning_mode ? this.errors.learning_mode : ''">
-                                            <b-select placeholder="Mode of Learning" v-model="fields.learning_mode" required expanded>
-                                                <option :value="item.learning_mode" v-for="(item, index) in this.learningModes" :key="index">{{ item.learning_mode }} - {{ item.learning_desc }}</option>
-                                            </b-select>
-                                        </b-field>
-                                    </div>
-                                </div>
-
-                                <div class="columns">
-                                    <div class="column">
-                                        <b-field label-position="on-border" label="Last School Attended">
-                                            <b-input type="text" v-model="fields.last_school_attended" placeholder="Last School Attended"></b-input>
-                                        </b-field>
-                                    </div>
-                                </div>
-
 
                                 <div class="columns">
                                     <div class="column">
