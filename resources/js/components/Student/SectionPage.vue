@@ -23,6 +23,8 @@
                 <input type="hidden" id="section_id" name="section_id" />
             </form>
         </div>
+
+
     </div><!--root div-->
 </template>
 

@@ -92,6 +92,11 @@ Route::get('/fetch-acadyears', [App\Http\Controllers\Administrator\AcadYearContr
 
 //SECTIONS
 Route::resource('/panel/section', App\Http\Controllers\Administrator\SectionController::class);
+
+Route::put('/section-disapprove-program/{sectionid}', [App\Http\Controllers\Administrator\SectionController::class, 'disapproveProgram']);
+Route::put('/section-approve-program/{sectionid}', [App\Http\Controllers\Administrator\SectionController::class, 'approveProgram']);
+
+
 Route::get('/fetch-sections', [App\Http\Controllers\Administrator\SectionController::class, 'index_data']);
 
 

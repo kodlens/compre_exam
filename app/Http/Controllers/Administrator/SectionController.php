@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\DB;
+ 
 
 use App\Models\Section;
 
@@ -26,6 +28,26 @@ class SectionController extends Controller
             ->paginate($req->perpage);
 
         return $data;
+    }
+
+    public function disapproveProgram(Request $req, $id){
+        $data = Section::find($id);
+        $data->is_allow = 0;
+        $data->save();
+
+        return response()->json([
+            'status' => 'updated'
+        ]);
+    }
+
+    public function approveProgram(Request $req, $id){
+        $data = Section::find($id);
+        $data->is_allow = 1;
+        $data->save();
+        
+        return response()->json([
+            'status' => 'updated'
+        ]);
     }
 
     public function create(){
