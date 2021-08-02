@@ -47,23 +47,23 @@ class TakingExamController extends Controller
         $ay = AcadYear::where('active', 1)->first();
 
         //DISABLE FOR THE MEAN TIME FOR DEBUGGING PURPOSE
-        // $isExist = TakingTest::where('user_id', $user_id)
-        //     ->where('acad_year_id', $ay->acad_year_id)
-        //     ->where('section_id', $section_id)
-        //         ->exists();
+        $isExist = TakingTest::where('user_id', $user_id)
+            ->where('acad_year_id', $ay->acad_year_id)
+            ->where('section_id', $section_id)
+                ->exists();
 
-        // if($isExist){
-        //     return redirect('/section')
-        //         ->with('error', 'exist');
-        // }
+        if($isExist){
+            return redirect('/section')
+                ->with('error', 'exist');
+        }
 
-        // //record the user open this section and questions
-        // //to avoid taking SS and avoid leakage of questionaire
-        // $takingTest = TakingTest::create([
-        //     'acad_year_id' => $ay->acad_year_id,
-        //     'user_id' => $user_id,
-        //     'section_id' => $section_id
-        // ]);
+        //record the user open this section and questions
+        //to avoid taking SS and avoid leakage of questionaire
+        $takingTest = TakingTest::create([
+            'acad_year_id' => $ay->acad_year_id,
+            'user_id' => $user_id,
+            'section_id' => $section_id
+        ]);
 
 
         return view('student.taking-exam')
@@ -85,7 +85,7 @@ class TakingExamController extends Controller
             ->where('acad_year_id', $ay->acad_year_id)
             ->where('section_id', $section_id)
             ->inRandomOrder()
-            ->take(5)
+            //->take(5)
             ->get();
 
 

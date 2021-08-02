@@ -53,9 +53,9 @@
                 <b-navbar-item href="/panel/question">
                     Question
                 </b-navbar-item>
-                <b-navbar-item href="/panel/student-answer">
+                <!-- <b-navbar-item href="/panel/student-answer">
                     Student Answer
-                </b-navbar-item>
+                </b-navbar-item> -->
                 <b-navbar-item href="/panel/student-result">
                     Student Result
                 </b-navbar-item>

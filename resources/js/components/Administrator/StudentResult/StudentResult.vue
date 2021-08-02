@@ -72,28 +72,20 @@
                         :default-sort-direction="defaultSortDirection"
                         @sort="onSort">
 
-                        <b-table-column field="answer_sheet_id" label="ID" v-slot="props">
-                            {{ props.row.answer_sheet_id }}
+                        <b-table-column field="student_id" label="ID" v-slot="props">
+                            {{ props.row.StudID }}
                         </b-table-column>
 
                         <b-table-column field="code" label="A.Y. Code" v-slot="props">
                             {{ props.row.code }}
                         </b-table-column>
 
-                        <b-table-column field="user_id" label="User ID" v-slot="props">
-                            {{ props.row.user_id }}
-                        </b-table-column>
-
                         <b-table-column field="fullname" label="Student Name" v-slot="props">
-                            {{ props.row.lname }}, {{ props.row.fname }} {{ props.row.mname }}
+                            {{ props.row.StudLName }}, {{ props.row.StudFName }} {{ props.row.StudMName }}
                         </b-table-column>
 
-                        <b-table-column field="first_program_choice" label="1st Program" v-slot="props">
-                            {{ props.row.first_program_choice }}
-                        </b-table-column>
-
-                        <b-table-column field="first_program_choice" label="2nd Program" v-slot="props">
-                            {{ props.row.second_program_choice }}
+                        <b-table-column field="StudCourse" label="Program" v-slot="props">
+                            {{ props.row.StudCourse }}
                         </b-table-column>
 
                         <b-table-column field="section" label="Section" v-slot="props">
@@ -115,6 +107,10 @@
                         <!--                        </b-table-column>-->
 
                     </b-table>
+
+                     <div class="buttons">
+                        <button class="button">DOWNLOAD IN EXCEL</button>
+                    </div>
                 </div><!--close column-->
             </div>
         </div>
@@ -125,12 +121,12 @@
 <script>
 export default {
 
-    props: {
-        propPrograms: {
-            type: String,
-            default: '',
-        }
-    },
+    // props: {
+    //     propPrograms: {
+    //         type: String,
+    //         default: '',
+    //     }
+    // },
 
     data(){
         return{
@@ -234,13 +230,13 @@ export default {
             });
         },
 
-        initData: function(){
-            this.programs = JSON.parse(this.propPrograms);
-        }
+        // initData: function(){
+        //     this.programs = JSON.parse(this.propPrograms);
+        // }
     },
 
     mounted() {
-        this.initData();
+        // this.initData();
         this.loadAsyncData();
     }
 
