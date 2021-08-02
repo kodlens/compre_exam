@@ -55,9 +55,9 @@
                             {{ props.row.allow_program }}
                         </b-table-column>
 
-                        <b-table-column field="is_allow" label="ALLOWED" v-slot="props">
-                            <span v-if="props.row.is_allow === 1">YES</span>
-                             <span v-else>NO</span>
+                        <b-table-column field="is_allow" label="ALLOWED" centered v-slot="props">
+                            <span class="allow-yes" v-if="props.row.is_allow === 1">YES</span>
+                             <span class="allow-no" v-else>NO</span>
                            
                         </b-table-column>
 
@@ -335,5 +335,21 @@ export default {
 </script>
 
 <style scoped>
+    .allow-yes{
+        padding: 5px 20px;
+        color: white;
+        font-weight: bold;
+        background: green;
+        font-size: 10px;
+        border-radius: 50px;
+    }
 
+    .allow-no{
+        padding: 5px 20px;
+        color: white;
+        font-weight: bold;
+        background: red;
+        font-size: 10px;
+        border-radius: 50px;
+    }
 </style>
