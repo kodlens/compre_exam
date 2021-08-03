@@ -59,8 +59,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/section', [App\Http\Controllers\Student\SectionPageController::class, 'index']);
 Route::resource('/section-question', App\Http\Controllers\Student\SectionQuestionController::class);
 
-//Route::post('/taking-exam', [App\Http\Controllers\Student\TakingExamController::class, 'index']); //debugging mode
-Route::get('/taking-exam', [App\Http\Controllers\Student\TakingExamController::class, 'index']);
+Route::post('/taking-exam', [App\Http\Controllers\Student\TakingExamController::class, 'index']); //debugging mode
+// Route::get('/taking-exam', [App\Http\Controllers\Student\TakingExamController::class, 'index']);
 
 
 Route::get('/taking-exam-question/{sectionid}', [App\Http\Controllers\Student\TakingExamController::class, 'examineeQuestion']);

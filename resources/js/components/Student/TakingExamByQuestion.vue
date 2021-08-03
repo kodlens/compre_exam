@@ -117,9 +117,8 @@ export default {
             this.student_schedule_id = this.studentschedId;
 
             axios.get('/taking-exam-question/'+this.sectionId).then(res=>{
-                //5pxconsole.log(res.data);
                 this.questions = res.data;
-                //this.startTimer(this.questions[0].set_time);
+                this.startTimer(this.questions[0].set_time);
             });
         },
 
