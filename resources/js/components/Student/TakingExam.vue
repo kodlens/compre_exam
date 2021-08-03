@@ -202,9 +202,10 @@ export default {
 <style scoped>
 
     .instruction-container{
-        background-color: #c1fad1;
+        background-color: #ffffff;
         padding: 15px;
         margin-bottom: 5px;
+        box-shadow: 2px 2px 2px 0.4;
     }
 
     .question-box{

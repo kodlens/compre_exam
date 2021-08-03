@@ -26,7 +26,7 @@
 
                                         <div class="buttons mt-5">
                                             <button :class="btnClass">LOGIN</button>
-                                            <a class="button is-primary is-light" href="/password/reset">RESET PASSWORD</a>
+                                            <a class="button is-primary is-light is-rounded" href="/password/reset">RESET PASSWORD</a>
                                         </div>
                                     </div>
                                 </form>
@@ -52,6 +52,7 @@ export default{
                 'button': true,
                 'is-primary': true,
                 'is-loading': false,
+                'is-rounded' : true,
             }
         }
     },
@@ -75,6 +76,11 @@ export default{
 }
 </script>
 <style scoped>
+
+.panel{
+    background: white;
+    
+}
     .panel-body{
         padding: 15px;
     }

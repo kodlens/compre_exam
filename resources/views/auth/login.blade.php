@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body>
+<body style="background-color: #E3E3F3">
     <div id="app">
         <login-page></login-page>
     </div>

@@ -17,7 +17,5 @@
 
     </section-page>
     
-    
-    
 
 @endsection

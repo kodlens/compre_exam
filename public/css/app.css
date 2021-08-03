@@ -26400,6 +26400,10 @@
   border: 1px solid red;
 }
 
+.panel {
+  background: white;
+}
+
 .button.btn-green {
   background-color: #046004;
   color: #ffffff;

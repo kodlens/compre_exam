@@ -23,8 +23,6 @@
                 <input type="hidden" id="section_id" name="section_id" />
             </form>
         </div>
-
-
     </div><!--root div-->
 </template>
 
@@ -83,6 +81,7 @@ export default {
         border-radius: 10px;
         border: 1px solid #c7c7c7;
         transition: all 0.2s ease;
+        background: white;
     }
 
     .img-wrapper:hover{

@@ -31,9 +31,12 @@ class TakingExamController extends Controller
 
 
     public function index(Request $req){
-        $section_id = $req->section_id;
+        //$section_id = $req->section_id;
+        $section_id = 3;
        // $student_schedule_id = $req->schedule_id;
         //return $section_id . ' - ' . $schedule_id;
+
+
         $is_allow = Section::where('section_id', $section_id)
             ->where('is_allow', 1)
             ->exists();
@@ -47,15 +50,15 @@ class TakingExamController extends Controller
         $ay = AcadYear::where('active', 1)->first();
 
         //DISABLE FOR THE MEAN TIME FOR DEBUGGING PURPOSE
-        $isExist = TakingTest::where('user_id', $user_id)
-            ->where('acad_year_id', $ay->acad_year_id)
-            ->where('section_id', $section_id)
-                ->exists();
+        // $isExist = TakingTest::where('user_id', $user_id)
+        //     ->where('acad_year_id', $ay->acad_year_id)
+        //     ->where('section_id', $section_id)
+        //         ->exists();
 
-        if($isExist){
-            return redirect('/section')
-                ->with('error', 'exist');
-        }
+        // if($isExist){
+        //     return redirect('/section')
+        //         ->with('error', 'exist');
+        // }
 
         //record the user open this section and questions
         //to avoid taking SS and avoid leakage of questionaire

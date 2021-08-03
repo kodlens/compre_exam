@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="theme-color" content="hsl(136, 55%, 28%)" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -16,8 +16,14 @@
 {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
 {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
 
-<!-- Styles -->
+    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        html, body{
+            background-color: #E3E3F3;
+        }
+    </style>
 
 </head>
 <body>

@@ -8,7 +8,7 @@
 
                             <div class="instruction-container">
                                 <div>
-                                    Instruction: Choose the letter of your answer.
+                                    <strong>Instruction: </strong> Choose the letter of your answer.
                                     <br>
                                     <!-- <strong><span style="color:red;">Reminder: Please refrain taking screenshots and posting any of the questions of the test.</span></strong> -->
                                 </div>
@@ -27,7 +27,7 @@
 
                                 <!--option content-->
                                 <div class="column">
-                                    <div class="columns" v-for="(option, k) in questions[questionCounter].options" :key="k">
+                                    <div class="columns my-2" v-for="(option, k) in questions[questionCounter].options" :key="k">
                                         <!--if question is text-->
                                         <div v-if="option.is_img == 0">
                                             <b-field>
@@ -119,7 +119,7 @@ export default {
             axios.get('/taking-exam-question/'+this.sectionId).then(res=>{
                 //5pxconsole.log(res.data);
                 this.questions = res.data;
-                this.startTimer(this.questions[0].set_time);
+                //this.startTimer(this.questions[0].set_time);
             });
         },
 
@@ -217,16 +217,34 @@ export default {
 <style scoped>
 
     .instruction-container{
-        background-color: #c1fad1;
+        background-color: rgb(255, 255, 255);
         padding: 15px;
         margin-bottom: 5px;
+        border-radius: 5px;
+        box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+            0 12.5px 10px rgba(0, 0, 0, 0.06),
+            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+            0 100px 80px rgba(0, 0, 0, 0.12)
+            ;
+        margin-bottom: 10px;
     }
 
     .question-box{
         border-radius: 5px;
-        background-color: rgb(238, 238, 238);
+        background-color: rgb(255, 255, 255);
         padding: 20px;
         margin-bottom: 10px;
+        box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+            0 12.5px 10px rgba(0, 0, 0, 0.06),
+            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+            0 100px 80px rgba(0, 0, 0, 0.12)
+            ;
     }
 
     .question-content{

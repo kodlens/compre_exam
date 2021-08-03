@@ -38,12 +38,12 @@
 
 
             <b-navbar-dropdown label="Schedule">
-                <b-navbar-item href="/panel/test-schedule">
+                <!-- <b-navbar-item href="/panel/test-schedule">
                     Schedules
-                </b-navbar-item>
-                <b-navbar-item href="/panel/student-schedule">
+                </b-navbar-item> -->
+                <!-- <b-navbar-item href="/panel/student-schedule">
                     Student Schedule
-                </b-navbar-item>
+                </b-navbar-item> -->
                 <b-navbar-item href="/panel/student-section-taken">
                     Student Section Taken
                 </b-navbar-item>

@@ -68,6 +68,9 @@ export default {
 </script>
 
 <style scoped>
+
+
+
     /*.instruction{*/
     /*    display: flex;*/
     /*    justify-content: center;*/
