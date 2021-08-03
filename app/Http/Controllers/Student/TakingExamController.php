@@ -88,7 +88,7 @@ class TakingExamController extends Controller
             ->where('acad_year_id', $ay->acad_year_id)
             ->where('section_id', $section_id)
             ->inRandomOrder()
-            //->take(5) // for debugging mode
+            ->take(100) // for debugging mode set to 5 or lower
             ->get();
 
 

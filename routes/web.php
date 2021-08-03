@@ -86,6 +86,7 @@ Route::post('/admin-login', [App\Http\Controllers\Administrator\AdminLoginContro
 Route::get('/panel/home', [App\Http\Controllers\Administrator\PanelHomeController::class, 'index']);
 
 
+
 //ACAD YEAR
 Route::resource('/panel/acadyear', App\Http\Controllers\Administrator\AcadYearController::class);
 Route::get('/fetch-acadyears', [App\Http\Controllers\Administrator\AcadYearController::class, 'index_data']);
