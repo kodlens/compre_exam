@@ -29,18 +29,15 @@ class StudentSectionTakenController extends Controller
         $sort = explode('.', $req->sort_by);
         $data = DB::table('taking_test as a')
             ->join('acad_years as b', 'a.acad_year_id', 'b.acad_year_id')
-            ->join('users as c', 'a.user_id', 'c.user_id')
+            ->join('registrar_gadtc.tblstudhinfo as c', 'a.user_id', 'c.StudID')
             ->join('sections as d', 'a.section_id', 'd.section_id')
-            ->join('student_schedules as e', 'a.student_schedule_id', 'e.student_schedule_id')
-            ->join('test_schedules as f', 'e.test_schedule_id', 'f.test_schedule_id')
             ->select('a.taking_test_id', 'a.acad_year_id', 'b.code', 'b.description',
                 DB::raw('date(a.created_at) as created_date'), DB::raw('date_format(a.created_at,"%h:%i") as created_time'),
-                'c.user_id', 'c.lname', 'c.fname', 'c.mname', 'c.first_program_choice',
+                'c.StudID', 'c.StudLName', 'c.StudFName', 'c.StudMName',
                 'd.section_id', 'd.section',
-                'a.student_schedule_id', 'e.student_schedule_id',
-                'f.description as schedule_description', 'f.from', 'f.to', 'f.max_user')
-            ->where('lname', 'like', $req->lname . '%')
-            ->where('fname', 'like', $req->fname . '%')
+                'a.student_schedule_id')
+            ->where('StudLName', 'like', $req->lname . '%')
+            ->where('StudFName', 'like', $req->fname . '%')
             ->paginate($req->perpage);
         return $data;
     }
@@ -52,7 +49,7 @@ class StudentSectionTakenController extends Controller
             ->delete();
 
         AnswerSheet::where('code', $req->code)
-            ->where('user_id', $req->user_id)
+            ->where('student_id', $req->user_id)
             ->where('section_id', $req->section_id)
             ->delete();
         return ['status' => 'deleted'];

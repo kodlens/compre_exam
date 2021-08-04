@@ -65,11 +65,7 @@
                 </b-table-column>
 
                 <b-table-column field="fullname" label="Fullname" v-slot="props">
-                    {{ props.row.lname }}, {{ props.row.fname }} {{ props.row.mname }}
-                </b-table-column>
-
-                <b-table-column field="from" label="From/To" v-slot="props">
-                    {{ props.row.from }} - {{ props.row.from }}
+                    {{ props.row.StudLName }}, {{ props.row.StudFName }} {{ props.row.StudMName }}
                 </b-table-column>
 
                 <b-table-column field="section" label="Section" v-slot="props">

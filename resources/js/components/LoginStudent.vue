@@ -28,7 +28,7 @@
 
                                         <div class="buttons mt-5">
                                             <button :class="btnClass">LOGIN</button>
-                                            <a class="button is-primary is-light" href="/password/reset">RESET PASSWORD</a>
+                                            <!-- <a class="button is-primary is-light" href="/password/reset">RESET PASSWORD</a> -->
                                         </div>
                                     </div>
                                 </form>
