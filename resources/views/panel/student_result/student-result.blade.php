@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <student-result></student-result>
+    <student-result prop-sections='@json($sections)'></student-result>
 
 @endsection

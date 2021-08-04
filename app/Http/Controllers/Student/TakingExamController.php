@@ -60,8 +60,9 @@ class TakingExamController extends Controller
                 ->with('error', 'exist');
         }
 
-        //record the user open this section and questions
-        //to avoid taking SS and avoid leakage of questionaire
+        // record the user open this section and questions
+        // to avoid taking SS and avoid leakage of questionaire
+
         $takingTest = TakingTest::create([
             'acad_year_id' => $ay->acad_year_id,
             'user_id' => $user_id,

@@ -35,9 +35,9 @@
                             <div class="level-item">
                                 <b-field label-position="on-border" label="Search Program">
                                     <b-select placeholder="Search Program"
-                                              v-model="search.first_program_choice" @input="loadAsyncData">
+                                              v-model="search.section" @input="loadAsyncData">
                                         <option value="">ALL</option>
-                                        <option v-for="(item, index) in this.programs" :key="index" :value="item.CCode">{{ item.CCode }}</option>
+                                        <option v-for="(item, index) in this.sections" :key="index" :value="item.section">{{ item.section }}</option>
                                     </b-select>
                                 </b-field>
                             </div>
@@ -53,7 +53,9 @@
                         </div>
                     </div>
 
-
+                    <div>
+                        <span class="total-row">TOTAL ROWS: {{this.total}}</span>
+                    </div>
                     <b-table
                         :data="data"
                         :loading="loading"
@@ -109,7 +111,16 @@
                     </b-table>
 
                      <div class="buttons">
-                        <button class="button">DOWNLOAD IN EXCEL</button>
+                        <downloadexcel
+                            :fetch="loadDataForReport"
+                            :fields="json_fields"
+                            worksheet="REPORT"
+                            :class="btnClass"
+                            :before-generate="startDownload"
+                            :before-finish="finishDownload"
+                            name="student_result.xls">
+                            Export to Excel
+                        </downloadexcel>
                     </div>
                 </div><!--close column-->
             </div>
@@ -119,14 +130,20 @@
 </template>
 
 <script>
+import downloadexcel  from "vue-json-excel";
+
 export default {
 
-    // props: {
-    //     propPrograms: {
-    //         type: String,
-    //         default: '',
-    //     }
-    // },
+    props: {
+        propSections: {
+            type: String,
+            default: '',
+        }
+    },
+
+    components: {
+        downloadexcel,
+    },
 
     data(){
         return{
@@ -151,10 +168,23 @@ export default {
             search: {
                 user_id: '',
                 lname: '',
-                first_program_choice: '',
+                section: '',
             },
 
-            programs: [],
+            sections: [],
+
+            json_fields: {
+                'ID' : 'student_id',
+                'LASTNAME': 'StudLName',
+                'FIRSTNAME': 'StudFName',
+                'MIDDLENAME': 'StudMName',
+                'SEX': 'StudSex',
+                'PROGRAM': 'StudCourse',
+                'TOTAL SCORE': 'score',
+                'CREATED AT': 'created_at',
+            },
+
+            
         }
     },
 
@@ -167,7 +197,7 @@ export default {
                 `page=${this.page}`,
                 `user_id=${this.search.user_id}`,
                 `lname=${this.search.lname}`,
-                `first_program_choice=${this.search.first_program_choice}`
+                `section=${this.search.section}`
 
             ].join('&');
 
@@ -230,13 +260,32 @@ export default {
             });
         },
 
-        // initData: function(){
-        //     this.programs = JSON.parse(this.propPrograms);
-        // }
+        //REPORT DOWNLOAD TO EXCEL
+        loadDataForReport: async function(){
+            console.log(this.search.section);
+            const params = [
+                `section=${this.search.section}`
+            ].join('&')
+
+            const response = await axios.get(`/fetch-student-result-report?${params}`);
+            return response.data;
+        },
+        startDownload(){
+            this.btnClass['is-loading'] = true;
+        },
+        finishDownload(){
+            this.btnClass['is-loading'] = false;
+        },
+
+
+
+        initData: function(){
+            this.sections = JSON.parse(this.propSections);
+        }
     },
 
     mounted() {
-        // this.initData();
+        this.initData();
         this.loadAsyncData();
     }
 
@@ -274,6 +323,10 @@ export default {
 
 .option-panel{
     margin-left: 30px;
+}
+
+.total-row{
+    font-weight: bold;
 }
 
 </style>

@@ -19,9 +19,9 @@
                                 <div class="question-content">{{ questionCounter + 1 }}.)
                                     <span v-if="questions[questionCounter].is_question_img == 0">{{questions[questionCounter].question}}</span>
 
-                                    <!-- <div v-else class="question-img">
+                                    <div v-if="questions[questionCounter].is_question_img == 1" class="question-img">
                                         <img :src="`/storage/q/`+questions[questionCounter].question_img" alt="...">
-                                    </div> -->
+                                    </div>
                                 </div>
                                 <!--question content-->
 

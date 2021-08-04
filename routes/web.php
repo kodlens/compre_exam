@@ -134,6 +134,7 @@ Route::get('/fetch-student-answer', [App\Http\Controllers\Administrator\StudentA
 //Student Result
 Route::resource('/panel/student-result', App\Http\Controllers\Administrator\StudentResultController::class);
 Route::get('/fetch-student-result', [App\Http\Controllers\Administrator\StudentResultController::class, 'index_data']);
+Route::get('/fetch-student-result-report', [App\Http\Controllers\Administrator\StudentResultController::class, 'reportStudentResult']);
 
 
 //options
