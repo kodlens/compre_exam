@@ -28,14 +28,14 @@ class StudentResultController extends Controller
 
     public function index_data(Request $req){
         //return Question::all();
-        $sortkey = explode(".",$req->sort_by);
+        //$sortkey = explode(".",$req->sort_by);
         return DB::table('answer_sheets as a')
             ->join('registrar_gadtc.tblstudhinfo as b', 'a.student_id', 'b.StudID')
             ->join('sections as c', 'a.section_id', 'c.section_id')
             ->join('answers as d', 'a.answer_sheet_id', 'd.answer_sheet_id')
             ->join('options as e', 'd.option_id', 'e.option_id')
             ->join('questions as f', 'e.question_id', 'f.question_id')
-            ->where('a.student_id', $req->user_id == '' ? 'like' : '=', $req->user_id == '' ? '%' : $req->user_id)
+            ->where('b.StudID', $req->user_id == '' ? 'like' : '=', $req->user_id == '' ? '%' : $req->user_id)
             ->where('b.StudLName', 'like', $req->lname .'%')
             ->where('c.section', 'like', $req->section .'%')
             ->where('e.is_answer', 1)
