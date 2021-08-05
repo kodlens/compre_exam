@@ -33,10 +33,12 @@ class ResultExamController extends Controller
             ->join('options as b', 'a.option_id', 'b.option_id')
             ->join('answer_sheets as c', 'a.answer_sheet_id', 'c.answer_sheet_id')
             ->join('questions as d', 'b.question_id', 'd.question_id')
+            ->join('sections as e', 'c.section_id', 'e.section_id')
             ->where('c.student_id', $student_id)
             ->where('code', $ay->code)
-            ->where('b.is_answer', 1)
-            ->sum('d.score');
+            ->select('c.section_id', 'e.section', DB::raw('sum(d.score) as score'))
+            ->groupBy('c.section_id') 
+            ->where('b.is_answer', 1)->get();
 
         return $data;
 

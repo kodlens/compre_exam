@@ -10,8 +10,8 @@
                                     TEST RESULT
                                 </div>
                                 <div class="panel-body">
-                                    <p class="title">TOTAL SCORE</p>
-                                   <p class="score">{{ this.results }}</p>
+                                    <p class="title">SCORE</p>
+                                   <p class="score" v-for="(item, index) in this.results" :key="index"> {{ item.section }} - {{ item.score }}</p>
                                 </div>
                             </div>
                         </div><!--col-->
@@ -60,6 +60,6 @@ export default {
 
     .score{
         font-weight: bold;
-        font-size: 3em;
+        font-size: 1.5em;
     }
 </style>
