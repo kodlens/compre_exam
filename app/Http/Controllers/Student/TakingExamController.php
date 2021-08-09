@@ -77,8 +77,6 @@ class TakingExamController extends Controller
 
     public function examineeQuestion($section_id)
     {
-
-
         # code...
         //$section_id = $req->section;
         $ay = AcadYear::where('active', 1)->first();

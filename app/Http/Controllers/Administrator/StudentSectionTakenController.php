@@ -39,19 +39,22 @@ class StudentSectionTakenController extends Controller
             ->where('StudLName', 'like', $req->lname . '%')
             ->where('StudFName', 'like', $req->fname . '%')
             ->paginate($req->perpage);
+
         return $data;
     }
 
     public function deleteTaken(Request $req){
 
-        //return $req;
+        //return $req->StudID;
         TakingTest::where('taking_test_id', $req->taking_test_id)
             ->delete();
 
         AnswerSheet::where('code', $req->code)
-            ->where('student_id', $req->user_id)
+            ->where('student_id', $req->StudID)
             ->where('section_id', $req->section_id)
             ->delete();
+
+        
         return ['status' => 'deleted'];
     }
 
